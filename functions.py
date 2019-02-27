@@ -13,11 +13,10 @@ services = config_Globals.services
 #https://stackoverflow.com/questions/33239308/how-to-get-exception-message-in-python-properly/33239954
 def make_process(command):
     try:
-        haloload = Halo(text=config_Globals.load['text'], spinner=config_Globals.load['spinner'])
-        haloload.start()
-        subprocess.Popen(command.split(), stdout=subprocess.PIPE)
-        func_Globals.log = str(subproc_custom.Popen(command.split(), stdout=subprocess.PIPE).communicate(), encoding='utf-8')
-        haloload.stop()
+        with Halo(text='Loading', spinner='dots'):
+            subprocess.Popen(command.split(), stdout=subprocess.PIPE)
+            func_Globals.log = str(subproc_custom.Popen(command.split(), stdout=subprocess.PIPE).communicate(),
+                                   encoding='utf-8')
 
     except Exception as e:
         print('Execution failed')
