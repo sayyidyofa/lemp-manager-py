@@ -1,5 +1,4 @@
 import os
-import time
 from functions import *
 from pyfiglet import Figlet
 from config import config_Globals
@@ -22,12 +21,14 @@ def main():
                   "\n111)Start php\t222)Stop php\t333)Reload php"
                   "\n\ne)exit\n"
                   "\nInput: ")
+
         if x == '1':
             start('nginx')
         elif x == '2':
             stop('nginx')
         elif x == '3':
             reload('nginx')
+
         elif x == '11':
             start('mysql')
         elif x == '22':

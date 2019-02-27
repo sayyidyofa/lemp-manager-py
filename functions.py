@@ -1,3 +1,4 @@
+import time
 import subprocess
 import subproc_custom
 from halo import Halo
@@ -6,17 +7,17 @@ from config import *
 class func_Globals:
     log = ()
 
-
 cmd = config_Globals.cmd
 services = config_Globals.services
+text = config_Globals.load['text']
+spinner = config_Globals.load['spinner']
 
 #https://stackoverflow.com/questions/33239308/how-to-get-exception-message-in-python-properly/33239954
 def make_process(command):
     try:
-        with Halo(text='Loading', spinner='dots'):
+        with Halo(text=text, spinner=spinner):
             subprocess.Popen(command.split(), stdout=subprocess.PIPE)
-            func_Globals.log = str(subproc_custom.Popen(command.split(), stdout=subprocess.PIPE).communicate(),
-                                   encoding='utf-8')
+            func_Globals.log = str(subproc_custom.Popen(command.split(), stdout=subprocess.PIPE).communicate(), encoding='utf-8')
 
     except Exception as e:
         print('Execution failed')
@@ -46,3 +47,7 @@ def reload(service_param):
 
 def stop(service_param):
     make_process("service "+service_param+" stop")
+
+def load(sleep_param):
+    with Halo(text='Loading', spinner='dots'):
+        time.sleep(sleep_param)

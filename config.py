@@ -22,3 +22,4 @@ class config_Globals:
            "text": "Loading",
            "spinner": "dots"
        }
+
