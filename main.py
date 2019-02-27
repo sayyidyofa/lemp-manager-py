@@ -1,4 +1,5 @@
 import os
+import time
 from functions import *
 from pyfiglet import Figlet
 from config import config_Globals
@@ -27,7 +28,6 @@ def main():
             stop('nginx')
         elif x == '3':
             reload('nginx')
-
         elif x == '11':
             start('mysql')
         elif x == '22':

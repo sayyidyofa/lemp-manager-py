@@ -17,3 +17,8 @@ class config_Globals:
            "text": "LEMP Manager!",
            "font": "slant"
        }
+
+       load = {
+           "text": "Loading",
+           "spinner": "dots"
+       }

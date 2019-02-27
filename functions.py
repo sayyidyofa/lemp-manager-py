@@ -1,5 +1,6 @@
 import subprocess
 import subproc_custom
+from halo import Halo
 from config import *
 
 class func_Globals:
@@ -12,8 +13,11 @@ services = config_Globals.services
 #https://stackoverflow.com/questions/33239308/how-to-get-exception-message-in-python-properly/33239954
 def make_process(command):
     try:
+        haloload = Halo(text=config_Globals.load['text'], spinner=config_Globals.load['spinner'])
+        haloload.start()
         subprocess.Popen(command.split(), stdout=subprocess.PIPE)
         func_Globals.log = str(subproc_custom.Popen(command.split(), stdout=subprocess.PIPE).communicate(), encoding='utf-8')
+        haloload.stop()
 
     except Exception as e:
         print('Execution failed')
