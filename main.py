@@ -1,4 +1,3 @@
-import os
 from functions import *
 from pyfiglet import Figlet
 from config import config_Globals
@@ -14,11 +13,13 @@ def main():
         print("#" * 80)
         print(main_Globals.welcome_text)
         print("#" * 80)
-        print("\n" + status('nginx') + "\t" + status('mysql') + "\t" + status('php7.2-fpm'))
+        print("\nNginx: " + status('nginx') +
+              "\tMySQL: " + status('mysql') +
+              "\tPHP: " + status('php7.2-fpm'))
         x = input("\nMain menu:\n"
-                  "\n1)Start nginx\t2)Stop nginx\t3)Reload nginx"
-                  "\n11)Start mysql\t22)Stop mysql\t33)Reload mysql"
-                  "\n111)Start php\t222)Stop php\t333)Reload php"
+                  "\n1)Start nginx\t2)Stop nginx\t3)Reload nginx\t4)nginx logs"
+                  "\n11)Start mysql\t22)Stop mysql\t33)Reload mysql\t44)mysql logs"
+                  "\n111)Start php\t222)Stop php\t333)Reload php\t444)php logs"
                   "\n\ne)exit\n"
                   "\nInput: ")
 
@@ -28,6 +29,8 @@ def main():
             stop('nginx')
         elif x == '3':
             reload('nginx')
+        elif x == '4':
+            show_log('nginx')
 
         elif x == '11':
             start('mysql')
@@ -35,6 +38,8 @@ def main():
             stop('mysql')
         elif x == '33':
             reload('mysql')
+        elif x == '44':
+            show_log('mysql')
 
         elif x == '111':
             start('php7.2-fpm')
@@ -42,6 +47,8 @@ def main():
             stop('php7.2-fpm')
         elif x == '333':
             reload('php7.2-fpm')
+        elif x == '444':
+            show_log('php7.2-fpm')
 
         elif x == 'e':
             input("Press enter to exit")

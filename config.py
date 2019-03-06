@@ -23,3 +23,10 @@ class config_Globals:
            "spinner": "dots"
        }
 
+       logs = {
+           "nginx-access": "/var/log/nginx/access.log",
+           "nginx-error": "/var/log/nginx/access.log",
+           "mysql-error": "/var/log/mysql/error.log",
+           "php": "not configured yet"
+       }
+
